@@ -12,6 +12,11 @@ from mongoengine import *
 
 def home(request):
     """Renders the home page."""
+
+    j = '  '
+    for email in Totality.emails.objects:
+       j += email.subject + ' '
+
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -19,6 +24,7 @@ def home(request):
         {
             'title':'Home Page',
             'year':datetime.now().year,
+            'subjects': j,
         }
     )
 

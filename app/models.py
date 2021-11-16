@@ -25,6 +25,10 @@ class Post(Document):
     comments = ListField(EmbeddedDocumentField(Comment))
     meta = {'allow_inheritance': True}
 
+class EmailContents(Document):
+    subject = StringField()
+    contents = StringField()
+
 class TextPost(Post):
     content = StringField()
 
@@ -62,6 +66,7 @@ class Totality(models.Model):
     #userDefault = scott
     #userdB = mongoengine.User.michael
     userDb2 = User
+    emails = EmailContents
 
 
 for post in Post.objects:
