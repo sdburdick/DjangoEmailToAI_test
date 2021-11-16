@@ -5,7 +5,10 @@ Definition of models.
 from django.db import models
 
 # Create your models here.
+import mongoengine
 from mongoengine import *
+DATABASE_NAME = 'testE'
+mongoengine.connect(db=DATABASE_NAME)#, host=DATABASE_HOST, username=USERNAME, password=PASSWORD)
 
 class User(Document):
     email = StringField(required=True)
@@ -32,27 +35,35 @@ class LinkPost(Post):
     link_url = StringField()
 
 
-scott = User(email='burdick.10@wright.edu');
-scott.first_name = 'Scott'
-scott.last_name = 'Burdick'
-scott.save()
+    #uncomment to seed the database with our contact info
+#scott = User(email='burdick.10@wright.edu');
+#scott.first_name = 'Scott'
+#scott.last_name = 'Burdick'
+#scott.save()
 
-michael = User(email='celesti.2@wright.edu');
-michael.first_name = 'Michael'
-michael.last_name = 'Celesti'
-michael.save()
+#michael = User(email='celesti.2@wright.edu');
+#michael.first_name = 'Michael'
+#michael.last_name = 'Celesti'
+#michael.save()
 
-daniel = User(email='chong.8@wright.edu');
-daniel.first_name = 'Daniel'
-daniel.last_name = 'Chong'
-daniel.save()
+#daniel = User(email='chong.8@wright.edu');
+#daniel.first_name = 'Daniel'
+#daniel.last_name = 'Chong'
+#daniel.save()
 
-john = User(email='garrett.115@wright.edu');
-john.first_name = 'Jonathon'
-john.last_name = 'Garrett'
-john.save()
+#john = User(email='garrett.115@wright.edu');
+#john.first_name = 'Jonathon'
+#john.last_name = 'Garrett'
+#john.save()
 
+
+class Totality(models.Model):
+    userX = models.CharField(max_length = 100)
+    #userDefault = scott
+    #userdB = mongoengine.User.michael
+    userDb2 = User
 
 
 for post in Post.objects:
     print(post.title)
+

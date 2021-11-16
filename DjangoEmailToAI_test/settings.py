@@ -111,7 +111,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
-
+ 
 import mongoengine
 DATABASE_NAME = 'testE'
 DATABASE_HOST = 'mongodb://127.0.0.1'
