@@ -136,14 +136,14 @@ def parse_email_header(msg):
     # loop in the header list
     for header in header_list:
         # get each header value.
-        header_value = msg.get(header, '')
-        total = total + header + ' : ' + header_value
+        header_value = msg.get(header, ' ')
+        total = total + ' ' + header + ' ' + header_value
     return total
       
 # Parse email body data.      
 def parse_email_body(msg):
     print('********************************* start parse_email_body *********************************')
-    val = ' start '
+    val = ' '
     # if the email contains multiple part.
     if (msg.is_multipart()):
         # get all email message parts.
