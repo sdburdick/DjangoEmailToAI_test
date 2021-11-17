@@ -14,8 +14,15 @@ def home(request):
     """Renders the home page."""
 
     j = '  '
+    k = '  '
     for email in Totality.emails.objects:
-       j += email.subject + ' '
+        if email.contentsE != None:
+            k += email.contentsE + ' '
+        if email.subject != None:
+            j += email.subject + ' '
+        if (email.contentsE == None and email.subject == None):
+            k += "bad data"
+            j += "bad data"
 
     assert isinstance(request, HttpRequest)
     return render(
@@ -25,6 +32,7 @@ def home(request):
             'title':'Home Page',
             'year':datetime.now().year,
             'subjects': j,
+            'contents': k,
         }
     )
 

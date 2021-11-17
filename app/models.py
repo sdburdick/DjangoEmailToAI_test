@@ -27,7 +27,7 @@ class Post(Document):
 
 class EmailContents(Document):
     subject = StringField()
-    contents = StringField()
+    contentsE = StringField()
 
 class TextPost(Post):
     content = StringField()
