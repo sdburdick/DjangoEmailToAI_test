@@ -25,6 +25,7 @@ class ProjX(Document):
     
 count = get_user_email_index(user_email, user_password)
     
+#need to get the top 3 priority emails for projX and main into the home page
 while (count):
     subject, content = get_email_by_index(user_email, user_password, count)
     if "ProjX" in subject:
@@ -32,6 +33,10 @@ while (count):
         newmail.contentsE = content
         newmail.save()
     elif "ProjectX" in subject:
+        newmail = ProjX(subject = subject)
+        newmail.contentsE = content
+        newmail.save()
+    elif "Project X" in subject:
         newmail = ProjX(subject = subject)
         newmail.contentsE = content
         newmail.save()
