@@ -29,6 +29,10 @@ class EmailContents(Document):
     subject = StringField()
     contentsE = StringField()
 
+class ProjX(Document):
+    subject = StringField()
+    contentsE = StringField()
+
 class TextPost(Post):
     content = StringField()
 
@@ -62,11 +66,9 @@ class LinkPost(Post):
 
 
 class Totality(models.Model):
-    userX = models.CharField(max_length = 100)
-    #userDefault = scott
-    #userdB = mongoengine.User.michael
     userDb2 = User
     emails = EmailContents
+    projX = ProjX
 
 
 for post in Post.objects:

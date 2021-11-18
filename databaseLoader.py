@@ -17,6 +17,9 @@ user_password ="gggeampmnlhmtxaw"
 class EmailContents(Document):
     subject = StringField()
     contentsE = StringField()
+class ProjX(Document):
+    subject = StringField()
+    contentsE = StringField()
 
 #get_user_email_status(user_email, user_password)
     
@@ -24,9 +27,18 @@ count = get_user_email_index(user_email, user_password)
     
 while (count):
     subject, content = get_email_by_index(user_email, user_password, count)
-    newmail = EmailContents(subject = subject)
-    newmail.contentsE = content
-    newmail.save()
+    if "ProjX" in subject:
+        newmail = ProjX(subject = subject)
+        newmail.contentsE = content
+        newmail.save()
+    elif "ProjectX" in subject:
+        newmail = ProjX(subject = subject)
+        newmail.contentsE = content
+        newmail.save()
+    else:
+        newmail = EmailContents(subject = subject)
+        newmail.contentsE = content
+        newmail.save()
  
     count = count -1
     
